@@ -1,6 +1,10 @@
 <?php
 
-    $nom = $_POST["nom"];
+    $nom = "xxxxx";
+    if(isset($_POST["nom"])) {
+        $nom = $_POST["nom"];
+
+    }
 
     echo 'Bonjour Mr.' . $nom;
 ?>
@@ -21,14 +25,28 @@
         <button type="submit">Envoyer</button>
     </form>
     <h2>Faille 2 : Se connecter</h2>
-    <form action="/dashboard.php" method="post">
+    <form action="/dashboard.php" method="post" id="form">
         <label for="id">id</label>
         <input type="text" name="id" required>
 
         <label for="mdp">Mot de passe</label>
         <input type="password" name="mdp" required>
 
-        <button type="submit">Se connecter</button>
+        <button type="submit" id="envoyer">Se connecter</button>
     </form>
+    <script>
+        const form = document.querySelector("#form");
+        const btn = document.querySelector("#envoyer")
+
+        form.addEventListener("click", function(event) {
+            event.preventDefault();
+            let id = event.currentTarget.id.value;
+            if(id === "admin"){
+                document.cookie = "role=ADMIN";
+                document.location.href="http://localhost:8000/dashboard.php"; 
+            }
+        });
+    </script>
 </body>
+
 </html>

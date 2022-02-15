@@ -1,7 +1,5 @@
 <?php
 
-    
-
     $users = array(
         "Hamza",
         "David",
@@ -10,10 +8,17 @@
     );
 
     echo "<br />";
+    if($_COOKIE['role'] == "ADMIN"){
 
-    if(isset($_GET["delete"])) {
-        unset($users[$_GET["delete"]]);
-        print_r($users);
+        if(isset($_GET["delete"])) {
+            unset($users[$_GET["delete"]]);
+            print_r($users);
+        }
+        
+        
+    }else {
+        header("Refresh:2; url=index.php");
+        echo "VOUS N'ETES PAS ADMIN";
     }
 
 ?>
