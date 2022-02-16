@@ -1,5 +1,13 @@
 <?php
-
+    $db = new SQLite3('base.db');
+    //$query = $db->query('CREATE TABLE voitures 
+       // (
+          //  marque VARCHAR(100),
+        //    model VARCHAR(100)
+      //  )
+    
+    //');
+    
     $users = array(
         "Hamza",
         "David",
@@ -19,6 +27,10 @@
     }else {
         header("Refresh:2; url=index.php");
         echo "VOUS N'ETES PAS ADMIN";
+    }
+
+    if(isset($_POST["marque"]) && isset($_POST["model"])){
+        $db->query("INSERT INTO voitures (marque, model) VALUES ('" . $_POST['marque'] ."','" . $_POST['model'] ." '); " );
     }
 
 ?>
@@ -44,6 +56,20 @@
                 <li><?php echo $user; ?> <a href="http://localhost:8000/dashboard.php?delete=<?= $i-1 ?>">Supprimer</a></li>
             <?php } ?>
         </ul>
+    </div>
+    <hr>
+
+    <div>
+        <h1>Ajouter un vehicule</h1>
+        <?php
+        ?>
+        <form action="" method="post">
+            <label for="marque">Marque</label>
+            <input type="text" name="marque" id="marque">
+            <label for="model">Model</label>
+            <input type="text" name="model" id="model">
+            <button type="submit">Ajouter</button>
+        </form>
     </div>
 </body>
 </html>

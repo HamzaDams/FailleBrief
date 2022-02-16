@@ -13,5 +13,9 @@
  - Sur la bar de gauchet il y a un onglet Cookie ou vous pourrez inserez des cookie manuellement
  - On ajoute la clé: role et la valeur: ADMIN
  - On pourra maintenant pouvoir aller dans le lien qui lance l'action de suppression (ex: http://localhost:8000/dashboard.php?delete=0)
+## Injection SQL
+### Etape pour la faille SQL
+ - Une fois connecter dans le dashboard on peut ajouter un vehicule a la base de donnée via le formulaire
+ - Dans les inputs du formulaires on peut y injecter une requete sql  
 
 
